@@ -7,7 +7,7 @@ export default function useLocationMap() {
     function pin(e) {
         console.log('obtener getLatLng()', e.target.getLatLng())
         const marker = e.target.getLatLng()
-        center.value [marker.lat, marker.lng]
+        center.value = [marker.lat, marker.lng]
     }
 
     return{

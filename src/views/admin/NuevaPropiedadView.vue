@@ -136,14 +136,14 @@ const submit = handleSubmit(async(values) => {
                         :center="center" 
                         :use-global-leaflet="false"
                     >
-                    <LMarker 
-                        :lat-lng="center"
-                        draggable
-                        @moveend="pin"
-                    />
-                    <LTileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    ></LTileLayer>
+                        <LMarker 
+                            :lat-lng="center"
+                            draggable
+                            @moveend="pin"
+                        />
+                        <LTileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        ></LTileLayer>
                     </LMap>
                 </div>
             </div>

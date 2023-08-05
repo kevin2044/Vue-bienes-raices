@@ -1,6 +1,7 @@
 <script setup>
 import usePropiedades from '../../composables/usePropiedades'
-const { propiedadesCollection, propertyPrice } = usePropiedades()
+import { propertyPrice } from '../../helpers'
+const { propiedadesCollection } = usePropiedades()
 
 console.log(propiedadesCollection)
 </script>
