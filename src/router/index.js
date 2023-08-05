@@ -49,15 +49,15 @@ const router = createRouter({
 //Guard de navegacion
 router.beforeEach(async (to, from, next) => {
   const requiresAuth = to.matched.some(url => url.meta.requiresAuth)
-  console.log(requiresAuth)
+  //console.log(requiresAuth)
   if(requiresAuth){
     //comprobar que el usuario este autenticado
-    console.log('no esta logueado')
+    //console.log('no esta logueado')
     try {
       await authenticatedUser()
       next()
     } catch (error) {
-      console.log(error)
+      //console.log(error)
       next({name: 'login'})
     }
   }else{
@@ -70,7 +70,7 @@ function authenticatedUser(){
   const auth = useFirebaseAuth()
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user)
+      //console.log(user)
       unsubscribe()
       if(user){
         resolve(user)

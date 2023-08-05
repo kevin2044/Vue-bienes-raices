@@ -12,7 +12,7 @@ import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
 
 const items = [1,2,3,4,5]
 const { url, uploadImage, image } = useImage()
-const { zoom, center } = useLocationMap()
+const { zoom, center, pin } = useLocationMap()
 const db = useFirestore()
 const router = useRouter()
 const { handleSubmit } = useForm({
@@ -38,7 +38,8 @@ const submit = handleSubmit(async(values) => {
     console.log(propiedad)
     const docRef = await addDoc(collection(db, "propiedades"), {
         ...propiedad,
-        imagen: url.value
+        imagen: url.value,
+        ubicacion: center.value
     });
     if(docRef.id){
         router.push({name: 'admin-propiedades'})
@@ -138,6 +139,7 @@ const submit = handleSubmit(async(values) => {
                     <LMarker 
                         :lat-lng="center"
                         draggable
+                        @moveend="pin"
                     />
                     <LTileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
